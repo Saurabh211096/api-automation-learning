@@ -1,0 +1,126 @@
+{
+  "info": {
+    "_postman_id": "5259f294-1b1b-438c-a2bc-bd93f8705664",
+    "name": "Petstore Practice",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49587185"
+  },
+  "item": [
+    {
+      "name": "GET Pet by ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "const jsonData = pm.response.json();\r",
+              "\r",
+              "// Assert the name field\r",
+              "pm.test(\"Pet name is Unique_QA_Dog\", () => {\r",
+              "    pm.expect(jsonData.name).to.eql(\"Unique_QA_Dog\");\r",
+              "});\r",
+              "\r",
+              "// Assert the status field\r",
+              "pm.test(\"Pet status is available\", () => {\r",
+              "    pm.expect(jsonData.status).to.eql(\"available\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/pet/88997766",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "pet",
+            "88997766"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST Create Pet",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": 88997766,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Dogs\"\r\n  },\r\n  \"name\": \"Unique_QA_Dog\",\r\n  \"photoUrls\": [\"string\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"testing\"}],\r\n  \"status\": \"available\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/pet",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "pet"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE Pet",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://petstore.swagger.io/v2/pet/88997766",
+          "protocol": "https",
+          "host": [
+            "petstore",
+            "swagger",
+            "io"
+          ],
+          "path": [
+            "v2",
+            "pet",
+            "88997766"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
