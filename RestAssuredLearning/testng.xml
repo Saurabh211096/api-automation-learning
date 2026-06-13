@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!-- 1. The Suite is the highest level of execution -->
+<suite name="Petstore API Test Suite">
+
+	<!-- 2. A Test is a logical grouping of classes -->
+	<test name="Regression Tests">
+	
+		<!-- 3. Classes define which Java files to execute -->
+		<classes>
+			<class name="com.learning.TestNgBasics"/>
+			<class name="com.learning.CrudOperationsTest"/>
+		</classes>
+	
+	</test>
+
+</suite>

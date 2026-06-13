@@ -2,11 +2,15 @@ package com.learning;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
+
+import org.testng.annotations.Test;
+
 import io.restassured.response.Response;
 
 public class CrudOperationsTest {
 
-	public static void main(String[] args) {
+	@Test
+	public void runFullCrudCycle() {
 
 		baseURI = "https://petstore.swagger.io/v2";
 		
