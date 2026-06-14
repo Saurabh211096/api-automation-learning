@@ -39,17 +39,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "https://petstore.swagger.io/v2/pet/88997766",
-          "protocol": "https",
+          "raw": "{{baseUrl}}/pet/{{petId}}",
           "host": [
-            "petstore",
-            "swagger",
-            "io"
+            "{{baseUrl}}"
           ],
           "path": [
-            "v2",
             "pet",
-            "88997766"
+            "{{petId}}"
           ]
         }
       },
@@ -57,12 +53,42 @@
     },
     {
       "name": "POST Create Pet",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200 OK\", () => {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              "const randomId = Math.floor(Math.random() * 10000000);\r",
+              "\r",
+              "pm.environment.set(\"petId\", randomId);\r",
+              "\r",
+              "console.log(\"Dynamically generated Pet ID: \" + randomId);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"id\": 88997766,\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Dogs\"\r\n  },\r\n  \"name\": \"Unique_QA_Dog\",\r\n  \"photoUrls\": [\"string\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"testing\"}],\r\n  \"status\": \"available\"\r\n}",
+          "raw": "{\r\n  \"id\": {{petId}},\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"Dogs\"\r\n  },\r\n  \"name\": \"Unique_QA_Dog\",\r\n  \"photoUrls\": [\"string\"],\r\n  \"tags\": [{\"id\": 1, \"name\": \"testing\"}],\r\n  \"status\": \"available\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -70,15 +96,11 @@
           }
         },
         "url": {
-          "raw": "https://petstore.swagger.io/v2/pet",
-          "protocol": "https",
+          "raw": "{{baseUrl}}/pet",
           "host": [
-            "petstore",
-            "swagger",
-            "io"
+            "{{baseUrl}}"
           ],
           "path": [
-            "v2",
             "pet"
           ]
         }
@@ -106,17 +128,13 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "https://petstore.swagger.io/v2/pet/88997766",
-          "protocol": "https",
+          "raw": "{{baseUrl}}/pet/{{petId}}",
           "host": [
-            "petstore",
-            "swagger",
-            "io"
+            "{{baseUrl}}"
           ],
           "path": [
-            "v2",
             "pet",
-            "88997766"
+            "{{petId}}"
           ]
         }
       },
