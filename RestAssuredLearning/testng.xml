@@ -9,7 +9,6 @@
 	
 		<!-- 3. Classes define which Java files to execute -->
 		<classes>
-			<class name="com.learning.TestNgBasics"/>
 			<class name="com.learning.CrudOperationsTest"/>
 		</classes>
 	

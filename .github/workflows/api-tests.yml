@@ -1,0 +1,33 @@
+name: REST Assured API Tests CI
+
+# 1. Trigger Definition
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# 2. Job Definition
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    # Critical: Tell the pipeline where the pom.xml is located
+    defaults:
+      run:
+        working-directory: ./RestAssuredLearning
+
+    # 3. Execution Steps
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Java JDK 11
+      uses: actions/setup-java@v4
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: 'maven'
+
+    - name: Run API Tests via Maven
+      run: mvn clean test
