@@ -1,0 +1,6 @@
+Test ID,Description,Steps,Expected Result,Actual Result,Status
+TC-01,Verify POST creates a new pet,"1. Set method to POST. 2. Set URL to /pet. 3. Add JSON body with ID 77665544. 4. Send request.",Status code 200 and body contains ID 77665544,,
+TC-02,Verify GET retrieves the pet,"1. Set method to GET. 2. Set URL to /pet/77665544. 3. Send request.",Status code 200 and body contains name RestAssured_Dog,,
+TC-03,Verify PUT updates the pet,"1. Set method to PUT. 2. Set URL to /pet. 3. Add JSON body with status 'sold'. 4. Send request.",Status code 200 and body contains status sold,,
+TC-04,Verify DELETE removes the pet,"1. Set method to DELETE. 2. Set URL to /pet/77665544. 3. Send request.",Status code 200 and body message equals 77665544,,
+TC-05,Verify deleted pet is not found,"1. Set method to GET. 2. Set URL to /pet/77665544. 3. Send request.",Status code 404 and message 'Pet not found',,
