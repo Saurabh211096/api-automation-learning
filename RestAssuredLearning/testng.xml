@@ -10,6 +10,8 @@
 		<!-- 3. Classes define which Java files to execute -->
 		<classes>
 			<class name="com.learning.CrudOperationsTest"/>
+			<class name="com.learning.AdvancedJsonPathTest"/>
+			<class name="com.learning.PojoSerializationTest"/>
 		</classes>
 	
 	</test>
