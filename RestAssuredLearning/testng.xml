@@ -12,6 +12,7 @@
 			<class name="com.learning.CrudOperationsTest"/>
 			<class name="com.learning.AdvancedJsonPathTest"/>
 			<class name="com.learning.PojoSerializationTest"/>
+			<class name="com.learning.NegativeApiTests"/>
 		</classes>
 	
 	</test>
