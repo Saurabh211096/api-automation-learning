@@ -9,10 +9,10 @@
 	
 		<!-- 3. Classes define which Java files to execute -->
 		<classes>
-			<class name="com.learning.CrudOperationsTest"/>
-			<class name="com.learning.AdvancedJsonPathTest"/>
-			<class name="com.learning.PojoSerializationTest"/>
-			<class name="com.learning.NegativeApiTests"/>
+			<class name="com.learning.tests.CrudOperationsTest"/>
+			<class name="com.learning.tests.AdvancedJsonPathTest"/>
+			<class name="com.learning.tests.PojoSerializationTest"/>
+			<class name="com.learning.tests.NegativeApiTests"/>
 		</classes>
 	
 	</test>

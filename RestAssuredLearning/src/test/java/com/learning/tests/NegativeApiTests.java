@@ -1,4 +1,4 @@
-package com.learning;
+package com.learning.tests;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;

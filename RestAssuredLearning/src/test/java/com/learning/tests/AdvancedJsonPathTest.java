@@ -1,4 +1,4 @@
-package com.learning;
+package com.learning.tests;
 
 import static io.restassured.RestAssured.*;
 
@@ -51,8 +51,10 @@ public class AdvancedJsonPathTest {
 		baseURI = "https://petstore.swagger.io/v2";
 		System.out.println("\n--- Starting API Chaining Test ---");
 		
+		long uniqueDynamicId = System.currentTimeMillis();
+		
 		String reqBody = "{\n" +
-	            "  \"id\": 0,\n" + 
+	            "  \"id\": " + uniqueDynamicId + ",\n" + 
 	            "  \"name\": \"Chained_Dog\",\n" +
 	            "  \"status\": \"available\"\n" +
 	            "}";
@@ -64,13 +66,13 @@ public class AdvancedJsonPathTest {
 				.when()
 					.post("/pet");
 		
-		long dynamicPetId = postRes.jsonPath().getLong("id");
-		System.out.println("Extracted Dynamic ID: " + dynamicPetId);
+		long extractedId = postRes.jsonPath().getLong("id");
+		System.out.println("Extracted Dynamic ID: " + extractedId);
 		postRes.prettyPrint();
 		
 		given()
 		.when()
-			.get("/pet/" + dynamicPetId)
+			.get("/pet/" + extractedId)
 		.then()
 			.statusCode(200)
 			.body("name", equalTo("Chained_Dog"));
