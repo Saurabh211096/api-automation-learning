@@ -30,6 +30,14 @@
 		</dependency>
 
 		<!-- Source:
+		https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>2.35.2</version>
+		</dependency>
+
+		<!-- Source:
 		https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
 		<dependency>
 			<groupId>tools.jackson.core</groupId>
@@ -51,6 +59,24 @@
 						<!-- Tells Maven to use our specific TestNG suite -->
 						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
+					<!-- Force Allure to save results in the target folder -->
+					<systemPropertyVariables>
+						<allure.results.directory>
+							${project.build.directory}/allure-results</allure.results.directory>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+			<!-- Allure Maven Plugin generates the HTML dashboard -->
+			<plugin>
+				<groupId>io.qameta.allure</groupId>
+				<artifactId>allure-maven</artifactId>
+				<version>2.12.0</version>
+				<configuration>
+					<!-- Force the plugin to download the modern Java 17
+					compatible CLI -->
+					<reportVersion>2.24.0</reportVersion>
+					<!-- Explicitly tell the server where to find the results -->
+					<resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
 				</configuration>
 			</plugin>
 		</plugins>

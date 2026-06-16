@@ -8,3 +8,6 @@ target/
 
 # TestNG generated reports
 test-output/
+
+# Allure generated files
+allure-results/
